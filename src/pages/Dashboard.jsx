@@ -40,11 +40,12 @@ function Dashboard() {
           </div>
 
           <div className="dashboard-card">
-            <div className="card-icon">➕</div>
-            <h3>Nuovo Immobile</h3>
-            <p className="card-description">Aggiungi un nuovo appartamento</p>
-            <button className="btn-card">Crea</button>
-          </div>
+  <div className="card-icon">➕</div>
+  <h3>Nuovo Immobile</h3>
+  <p className="card-description">Aggiungi un nuovo appartamento</p>
+  <button className="btn-card" onClick={() => navigate('/add-property')}>Crea</button>
+</div>
+
 
           <div className="dashboard-card">
             <div className="card-icon">📊</div>
