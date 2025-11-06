@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './contexts/AuthContext'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import AddProperty from './pages/AddProperty'
 import './App.css'
 
 function ProtectedRoute({ children }) {
@@ -44,6 +45,11 @@ function App() {
           <Route path="/dashboard" element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/add-property" element={
+            <ProtectedRoute>
+              <AddProperty />
             </ProtectedRoute>
           } />
         </Routes>
