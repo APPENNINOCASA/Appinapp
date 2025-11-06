@@ -4,6 +4,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import AddProperty from './pages/AddProperty'
+import MyProperties from './pages/MyProperties'
 import './App.css'
 
 function ProtectedRoute({ children }) {
@@ -50,6 +51,11 @@ function App() {
           <Route path="/add-property" element={
             <ProtectedRoute>
               <AddProperty />
+            </ProtectedRoute>
+          } />
+          <Route path="/my-properties" element={
+            <ProtectedRoute>
+              <MyProperties />
             </ProtectedRoute>
           } />
         </Routes>
