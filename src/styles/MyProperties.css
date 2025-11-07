@@ -229,6 +229,15 @@
 }
 
 .btn-action.delete:hover {
+  .btn-action.images {
+  background: #17a2b8;
+  color: white;
+}
+
+.btn-action.images:hover {
+  background: #138496;
+}
+
   background: #c82333;
 }
 
