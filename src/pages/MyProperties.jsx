@@ -108,22 +108,26 @@ function MyProperties() {
               </div>
 
               <div className="property-actions">
-                <button 
-                  onClick={() => togglePublish(property.id, property.is_published)}
-                  className="btn-action publish"
-                >
-                  {property.is_published ? 'Nascondi' : 'Pubblica'}
-                </button>
-                <button className="btn-action edit">
-                  Modifica
-                </button>
-                <button 
-                  onClick={() => deleteProperty(property.id)}
-                  className="btn-action delete"
-                >
-                  Elimina
-                </button>
-              </div>
+  <button 
+    onClick={() => navigate(`/property-images/${property.id}`)}
+    className="btn-action images"
+  >
+    📸 Immagini
+  </button>
+  <button 
+    onClick={() => togglePublish(property.id, property.is_published)}
+    className="btn-action publish"
+  >
+    {property.is_published ? 'Nascondi' : 'Pubblica'}
+  </button>
+  <button 
+    onClick={() => deleteProperty(property.id)}
+    className="btn-action delete"
+  >
+    Elimina
+  </button>
+</div>
+
             </div>
           ))}
         </div>
