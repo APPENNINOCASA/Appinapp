@@ -16,21 +16,29 @@ function PropertyImages() {
   }, [id])
 
   const fetchPropertyAndImages = async () => {
+    console.log('Fetching property with id:', id)
+    
     // Carica dati immobile
-    const { data: propertyData } = await supabase
+    const { data: propertyData, error: propertyError } = await supabase
       .from('properties')
       .select('*')
       .eq('id', id)
       .single()
 
+    console.log('Property data:', propertyData)
+    console.log('Property error:', propertyError)
+
     setProperty(propertyData)
 
     // Carica immagini
-    const { data: imagesData } = await supabase
+    const { data: imagesData, error: imagesError } = await supabase
       .from('property_images')
       .select('*')
       .eq('property_id', id)
       .order('image_order', { ascending: true })
+
+    console.log('Images data:', imagesData)
+    console.log('Images error:', imagesError)
 
     setImages(imagesData || [])
     setLoading(false)
@@ -89,22 +97,23 @@ function PropertyImages() {
     }
   }
 
+  console.log('Render - loading:', loading, 'property:', property, 'images:', images)
+
   if (loading) {
-  return <div className="loading">Caricamento...</div>
-}
+    return <div className="loading">Caricamento...</div>
+  }
 
-if (!property) {
-  return (
-    <div className="loading">
-      Immobile non trovato
-      <br />
-      <button onClick={() => navigate('/my-properties')} style={{marginTop: '20px'}}>
-        Torna agli immobili
-      </button>
-    </div>
-  )
-}
-
+  if (!property) {
+    return (
+      <div className="loading">
+        Immobile non trovato
+        <br />
+        <button onClick={() => navigate('/my-properties')} style={{marginTop: '20px', padding: '10px 20px', cursor: 'pointer'}}>
+          Torna agli immobili
+        </button>
+      </div>
+    )
+  }
 
   return (
     <div className="property-images-container">
