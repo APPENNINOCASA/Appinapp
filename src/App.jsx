@@ -8,6 +8,8 @@ import MyProperties from './pages/MyProperties'
 import PropertyImages from './pages/PropertyImages'
 import Home from './pages/Home'
 import PropertyDetail from './pages/PropertyDetail'
+import EditProperty from './pages/EditProperty'
+
 import './App.css'
 
 function ProtectedRoute({ children }) {
