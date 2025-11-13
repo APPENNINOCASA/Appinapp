@@ -27,21 +27,29 @@ function PropertyDetail() {
   }, [id])
 
   const fetchPropertyDetails = async () => {
+    console.log('Fetching property with id:', id)
+    
     // Carica immobile
-    const { data: propertyData } = await supabase
+    const { data: propertyData, error: propertyError } = await supabase
       .from('properties')
       .select('*')
       .eq('id', id)
       .single()
 
+    console.log('Property data:', propertyData)
+    console.log('Property error:', propertyError)
+
     setProperty(propertyData)
 
     // Carica immagini
-    const { data: imagesData } = await supabase
+    const { data: imagesData, error: imagesError } = await supabase
       .from('property_images')
       .select('*')
       .eq('property_id', id)
       .order('image_order', { ascending: true })
+
+    console.log('Images data:', imagesData)
+    console.log('Images error:', imagesError)
 
     setImages(imagesData || [])
     if (imagesData && imagesData.length > 0) {
@@ -136,6 +144,9 @@ function PropertyDetail() {
           <div className="detail-badges">
             <span className="badge-type">{property.property_type}</span>
             <span className="badge-status">{property.status}</span>
+            <span className="badge-price">
+              {formatPrice(property.price, property.price_type)}
+            </span>
           </div>
         </div>
 
