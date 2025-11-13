@@ -9,7 +9,6 @@ import PropertyImages from './pages/PropertyImages'
 import Home from './pages/Home'
 import PropertyDetail from './pages/PropertyDetail'
 import EditProperty from './pages/EditProperty'
-
 import './App.css'
 
 function ProtectedRoute({ children }) {
@@ -69,6 +68,11 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/property/:id" element={<PropertyDetail />} />
+          <Route path="/edit-property/:id" element={
+            <ProtectedRoute>
+              <EditProperty />
+            </ProtectedRoute>
+          } />
         </Routes>
       </AuthProvider>
     </Router>
